@@ -1,0 +1,4 @@
+flask
+ultralytics
+fpdf2
+pillow

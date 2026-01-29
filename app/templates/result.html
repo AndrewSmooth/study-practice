@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><title>Результат</title></head>
+<body>
+<h2>Результат обработки</h2>
+<p>Обнаружено фенов: <b>{{ num_dryers }}</b></p>
+<img src="{{ url_for('static', filename='input.jpg') }}" width="400" alt="Исходное">
+<img src="{{ url_for('static', filename='output.jpg') }}" width="400" alt="Результат">
+<br><br>
+<a href="/">← Назад</a> |
+<a href="/report" target="_blank">Сгенерировать отчёт (PDF)</a>
+</body>
+</html>
