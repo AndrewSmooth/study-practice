@@ -1,13 +1,145 @@
 <!DOCTYPE html>
-<html>
-<head><title>Результат</title></head>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результат — Контроль фенов</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf9 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            padding: 30px 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 35px;
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 700;
+            font-size: 26px;
+        }
+        .result-summary {
+            background: #e8f7ff;
+            padding: 14px 24px;
+            border-radius: 12px;
+            display: inline-block;
+            margin: 20px 0;
+            font-size: 18px;
+            font-weight: 600;
+            color: #2980b9;
+            border: 1px solid #bee8ff;
+        }
+        .images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        .image-card {
+            flex: 1;
+            min-width: 280px;
+            max-width: 400px;
+        }
+        .image-card img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            max-height: 400px;
+            object-fit: contain;
+        }
+        .image-label {
+            margin-top: 10px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 16px;
+        }
+        .actions {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 12px 28px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-back {
+            background: #ecf0f1;
+            color: #2c3e50;
+        }
+        .btn-back:hover {
+            background: #d5dbdb;
+            transform: translateY(-2px);
+        }
+        .btn-report {
+            background: #2ecc71;
+            color: white;
+            box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+        }
+        .btn-report:hover {
+            background: #27ae60;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(46, 204, 113, 0.4);
+        }
+        .footer {
+            margin-top: 30px;
+            color: #95a5a6;
+            font-size: 14px;
+        }
+    </style>
+</head>
 <body>
-<h2>Результат обработки</h2>
-<p>Обнаружено фенов: <b>{{ num_dryers }}</b></p>
-<img src="{{ url_for('static', filename='input.jpg') }}" width="400" alt="Исходное">
-<img src="{{ url_for('static', filename='output.jpg') }}" width="400" alt="Результат">
-<br><br>
-<a href="/">← Назад</a> |
-<a href="/report" target="_blank">Сгенерировать отчёт (PDF)</a>
+    <div class="container">
+        <h1>✅ Результат обработки</h1>
+
+        <div class="result-summary">
+            Обнаружено фенов: <b>{{ num_dryers }}</b>
+        </div>
+
+        <div class="images">
+            <div class="image-card">
+                <img src="{{ url_for('static', filename='input.jpg') }}" alt="Исходное изображение">
+                <div class="image-label">Исходное фото</div>
+            </div>
+            <div class="image-card">
+                <img src="{{ url_for('static', filename='output.jpg') }}" alt="Результат с детекцией">
+                <div class="image-label">Результат (детекция)</div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <a href="/" class="btn btn-back">← Назад к загрузке</a>
+            <a href="/report" class="btn btn-report" target="_blank">📄 Сгенерировать отчёт (PDF)</a>
+        </div>
+
+        <div class="footer">
+            Используется YOLOv8l • Учебная практика
+        </div>
+    </div>
 </body>
 </html>
